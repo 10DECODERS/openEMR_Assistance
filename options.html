@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OpenEMR Code Extractor Options</title>
+  <style>
+    body {
+      width: 600px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 20px;
+    }
+    .option {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h2>SOAP Assistant Options</h2>
+
+  <div class="option">
+    <label for="apiKey">AI API Key:</label>
+    <input type="password" id="apiKey" placeholder="Enter your Anthropic/OpenAI API key">
+    <small>For SOAP note generation (required)</small>
+  </div>
+
+  <div class="option">
+    <label for="enableValidation">Enable Code Validation:</label>
+    <input type="checkbox" id="enableValidation" checked>
+    <small>Filter out invalid medical codes</small>
+  </div>
+
+  <div class="option">
+    <label for="autoLink">Auto-highlight Codes on Page:</label>
+    <input type="checkbox" id="autoLink" checked>
+    <small>Automatically highlight found codes on the OpenEMR page</small>
+  </div>
+
+  <div class="option">
+    <label for="codeTypes">Code Types to Extract:</label>
+    <div>
+      <input type="checkbox" id="icd10" checked> ICD-10<br>
+      <input type="checkbox" id="cpt" checked> CPT<br>
+      <input type="checkbox" id="snomed" checked> SNOMED
+    </div>
+  </div>
+
+  <div class="option">
+    <label for="maxTextLength">Max Text Length to Analyze (chars):</label>
+    <input type="number" id="maxTextLength" value="50000" min="1000" max="100000">
+  </div>
+
+  <button id="saveOptions">Save Changes</button>
+
+  <script src="options.js"></script>
+</body>
+</html>

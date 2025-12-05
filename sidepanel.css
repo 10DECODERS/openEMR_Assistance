@@ -1,0 +1,745 @@
+/* Reset & Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  background-color: #fcfcfb;
+  color: #242424;
+  height: 100vh;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.5;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Container */
+.copilot-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Header */
+.copilot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  flex: 1;
+}
+
+.copilot-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.header-title {
+  font-weight: 600;
+  font-size: 15px;
+  color: #242424;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.header-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  color: #616161;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon-btn:hover {
+  background-color: #f0f0f0;
+  color: #242424;
+}
+
+/* Chat Area */
+.chat-area {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 12px 120px 12px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Welcome Screen */
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  animation: fadeIn 0.5s ease-out;
+  align-items: flex-start;
+  text-align: left;
+  padding: 40px 12px 20px 12px;
+  width: 100%;
+}
+
+.welcome-title {
+  font-size: 28px;
+  font-weight: 400;
+  color: #242424;
+  line-height: 1.4;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  width: 100%;
+}
+
+.suggestion-chips {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  align-self: flex-start;
+}
+
+.suggestion-chip {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 10px 0;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  font-weight: 400;
+  color: #424242;
+  box-shadow: none;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  width: 100%;
+  white-space: normal;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.suggestion-chip .suggestion-icon {
+  flex-shrink: 0;
+  color: #616161;
+  margin-top: 2px;
+}
+
+.suggestion-chip span {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.suggestion-chip:hover {
+  background-color: transparent;
+  color: #107c10;
+}
+
+.suggestion-chip:hover .suggestion-icon {
+  color: #107c10;
+}
+
+.suggestion-chip:active {
+  transform: none;
+}
+
+/* Messages */
+.messages-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 16px;
+  width: 100%;
+}
+
+.message {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  animation: slideIn 0.3s ease-out;
+}
+
+.message.user {
+  justify-content: flex-end;
+}
+
+.message-content {
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  position: relative;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  overflow: hidden;
+}
+
+.message.user .message-content {
+  background-color: #e8ebfa;
+  color: #242424;
+  border-bottom-right-radius: 4px;
+  max-width: 85%;
+}
+
+.message.ai .message-content {
+  background-color: transparent;
+  color: #242424;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.message.ai .message-content p {
+  margin-bottom: 12px;
+}
+
+.message.ai .message-content strong {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.message.ai .message-content ul {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.message.ai .message-content li {
+  margin-bottom: 4px;
+}
+
+.ai-avatar {
+  width: 20px;
+  height: 20px;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 4px;
+}
+
+.ai-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Input Area */
+.input-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: linear-gradient(to top, #fcfcfb 80%, transparent);
+}
+
+.input-container {
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+  padding: 8px 12px;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  transition: box-shadow 0.2s;
+}
+
+.input-container:focus-within {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  border-color: #d0d0d0;
+}
+
+.attach-btn,
+.send-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  color: #616161;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.attach-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.send-btn {
+  background-color: #107c10;
+  /* Copilot Green */
+  color: white;
+}
+
+.send-btn:hover {
+  background-color: #0b5a0b;
+}
+
+.send-btn:disabled {
+  background-color: #e0e0e0;
+  color: #9e9e9e;
+  cursor: not-allowed;
+}
+
+#chatInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  resize: none;
+  padding: 10px 0;
+  font-family: inherit;
+  font-size: 14px;
+  max-height: 120px;
+  background: transparent;
+}
+
+.footer-text {
+  text-align: center;
+  font-size: 11px;
+  color: #757575;
+  margin-top: 8px;
+}
+
+/* Loading Animation */
+.loading-indicator {
+  display: flex;
+  gap: 4px;
+  padding: 12px 0;
+  margin-left: 40px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: #107c10;
+  border-radius: 50%;
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+
+  40% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}
+
+
+/* Insert Button in Chat */
+.insert-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #107c10;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 18px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: background-color 0.2s;
+}
+
+.insert-action-btn:hover {
+  background-color: #0b5a0b;
+}
+
+/* Copy Button in Chat */
+.copy-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #ffffff;
+  color: #242424;
+  border: 1px solid #d1d1d1;
+  padding: 8px 16px;
+  border-radius: 18px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: all 0.2s;
+}
+
+.copy-action-btn:hover {
+  background-color: #f0f0f0;
+  border-color: #a0a0a0;
+}
+
+/* Code Block Styling */
+.code-block {
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 12px;
+  font-family: monospace;
+  margin: 8px 0;
+  border: 1px solid #e0e0e0;
+}
+
+/* Follow-up Suggestions */
+.follow-up-suggestion {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  padding: 8px 0;
+  text-align: left;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 400;
+  color: #424242;
+  transition: color 0.2s;
+}
+
+.follow-up-suggestion:hover {
+  color: #107c10;
+}
+
+.follow-up-suggestion svg {
+  flex-shrink: 0;
+  color: #616161;
+}
+
+.follow-up-suggestion:hover svg {
+  color: #107c10;
+}
+
+/* Gemini-style UI Components */
+
+/* Collapsible Sources Section */
+.sources-section {
+  margin-top: 16px;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 12px;
+}
+
+.sources-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 6px 0;
+  cursor: pointer;
+  font-size: 13px;
+  color: #1a73e8;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.sources-toggle:hover {
+  color: #1557b0;
+}
+
+.sources-toggle svg {
+  transition: transform 0.2s;
+}
+
+.sources-toggle.expanded svg {
+  transform: rotate(180deg);
+}
+
+.sources-content {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  font-size: 12px;
+  color: #5f6368;
+  display: none;
+}
+
+.sources-content.visible {
+  display: block;
+}
+
+.source-link:hover {
+  text-decoration: underline !important;
+  color: #1557b0 !important;
+}
+
+.source-link svg {
+  flex-shrink: 0;
+}
+
+/* Action Buttons Row */
+.action-buttons-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid #dadce0;
+  padding: 10px 18px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #3c4043;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.action-btn:hover {
+  background: #f8f9fa;
+  border-color: #b0b0b0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.action-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.action-btn svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* Feedback Buttons */
+.feedback-buttons {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.feedback-btn {
+  background: transparent;
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #5f6368;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.feedback-btn:hover {
+  background: #f1f3f4;
+}
+
+.feedback-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.feedback-btn.active {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.feedback-btn.feedback-dislike.active {
+  background: #ffebee;
+  color: #c62828;
+}
+
+/* Improved Follow-up Suggestions */
+.suggestions-container {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.suggestions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.suggestion-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: transparent;
+  border: none;
+  padding: 10px 4px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  color: #3c4043;
+  transition: all 0.2s ease;
+  line-height: 1.5;
+  border-radius: 8px;
+}
+
+.suggestion-item:hover {
+  color: #1a73e8;
+  background: #f8f9fa;
+  padding-left: 8px;
+}
+
+.suggestion-item svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: #5f6368;
+  width: 18px;
+  height: 18px;
+  transition: color 0.2s ease;
+}
+
+.suggestion-item:hover svg {
+  color: #1a73e8;
+}
+
+.suggestions-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  padding: 8px 0;
+  cursor: pointer;
+  font-size: 13px;
+  color: #5f6368;
+  margin-top: 4px;
+  transition: color 0.2s;
+}
+
+.suggestions-toggle:hover {
+  color: #3c4043;
+}
+
+.suggestions-toggle svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Context Badge */
+.context-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: #e8f0fe;
+  border-radius: 12px;
+  font-size: 11px;
+  color: #1967d2;
+  margin-top: 12px;
+}
+
+/* More Options Button */
+.more-options-btn {
+  background: transparent;
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #5f6368;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.more-options-btn:hover {
+  background: #f1f3f4;
+}
+
+.more-options-btn svg {
+  width: 18px;
+  height: 18px;
+}
