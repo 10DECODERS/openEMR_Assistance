@@ -2,6 +2,9 @@
 (function () {
     'use strict';
 
+    // Default API Key (fallback when not set in storage)
+    const DEFAULT_API_KEY = '';
+
     // DOM Elements
     const chatArea = document.getElementById('chatArea');
     const messagesContainer = document.getElementById('messagesContainer');
@@ -196,12 +199,7 @@
             return;
         }
 
-        const apiKey = (await chrome.storage.sync.get({ apiKey: '' })).apiKey;
-        if (!apiKey) {
-            addMessage("Please set your Anthropic API key in the extension settings.", 'ai');
-            showLoading(false);
-            return;
-        }
+        const apiKey = (await chrome.storage.sync.get({ apiKey: '' })).apiKey || DEFAULT_API_KEY;
 
         const prompt = `You are an expert medical biller. Based on the clinical content below, generate a "Fee Slip" or Superbill.
         
@@ -759,12 +757,7 @@
 
     async function handleGeneralChat(userQuery) {
         // Content is already freshly fetched in handleUserMessage
-        const apiKey = (await chrome.storage.sync.get({ apiKey: '' })).apiKey;
-        if (!apiKey) {
-            addMessage("Please set your Anthropic API key in the extension settings.", 'ai');
-            showLoading(false);
-            return;
-        }
+        const apiKey = (await chrome.storage.sync.get({ apiKey: '' })).apiKey || DEFAULT_API_KEY;
         // Construct Prompt with fresh patient context
         const systemPrompt = `You are "EMR Copilot", an expert clinical AI assistant deeply integrated into OpenEMR.
         
@@ -876,12 +869,7 @@ YOUR RESPONSE: `;
         }
 
         // 2. Call LLM (Simulated or Real)
-        const apiKey = (await chrome.storage.sync.get({ apiKey: '' })).apiKey;
-        if (!apiKey) {
-            addMessage("Please set your Anthropic API key in the extension settings.", 'ai');
-            showLoading(false);
-            return;
-        }
+        const apiKey = (await chrome.storage.sync.get({ apiKey: '' })).apiKey || DEFAULT_API_KEY;
 
         const prompt = `You are an expert clinical scribe. Generate a SOAP note from the clinical data below.
 
